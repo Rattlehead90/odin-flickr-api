@@ -1,0 +1,19 @@
+<div class="query-container">
+  <%= image_tag 'enter', class: "enter" %>
+  <%= form_with method: :get do |form| %>
+    <%= form.label :user_id, 'Enter ID of Flickr user: ' %>
+    <%= form.text_field :user_id %>
+    <%= form.submit 'Display photos' %>
+    <%= image_tag 'click', class: "click" %>
+  <% end %>
+  <div class="scroll-box">
+    <div class="pic-box">
+      <% @photos&.each do |photo| %>
+        <div class="pic">
+          <%= image_tag Flickr.url_m(photo) %>
+        </div>
+      <% end %>
+    </div>
+    <%= image_tag 'scroll', class: "scroll" unless @photos.nil? %>
+  </div>
+</div>
